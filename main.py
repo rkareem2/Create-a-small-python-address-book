@@ -1,7 +1,9 @@
 # creating a small python address book
 
+#Dictionary that stores Name and various info
 contacts = {}
 
+#function that add contacts
 def add_contacts():
   #Nested dictionaries to take name and its various information
   key = input("Enter name for address: ")
@@ -10,16 +12,18 @@ def add_contacts():
   else:
     number = input("Enter Number: ")
     zipcode = int(input("Enter the zipcode: "))
-    address = input("Enter Address")
-    occupation = input("Enter Occupation")
+    address = input("Enter Address: ")
+    occupation = input("Enter Occupation: ")
     contacts[key] = {
       "Number" : number,
       "ZipCode" : zipcode,
       "Address" : address,
       "Occupation" : occupation    
     }
+    print(" ")
     print(f"{key} has been added succesfully")
 
+#Function that removes contact
 def remove_contacts():
   key = input ("what contact name would you like to delete: ")
   if key in contacts:
@@ -28,6 +32,8 @@ def remove_contacts():
   else:
     print(f"{key} does not exist")
 
+
+#Update contact as needed
 def update_contacts():
   key = input("What name would you like to update: ")
   if key in contacts:
@@ -51,14 +57,17 @@ def update_contacts():
   else:
     print(f"Contact {key} does not exist. Use the add function to create it.")
 
-    
+#display contacts   
 def display_contacts():
-  key = input ("What value would you like to display?: ")
-  if key in contacts:
+  key = input ("What Name would you like to display?: ")
+  if len(contacts) == 0:
+    print("The contact log is empty")
+  elif key in contacts:
     print(contacts[key])
   else:
     print(f"{key} does not exist")
 
+#display all contacts as needed
 def display_all():
   for name, number in contacts.items():
     print (f"{name} : {number}")
@@ -67,6 +76,7 @@ def display_all():
 
 def main():
   while True:
+    print(" ")
     print("Welcome to the address book")
     print("\nAddress Book Menu:")
     print("1. Add Contact")
